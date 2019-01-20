@@ -80,7 +80,8 @@ class UDS(Packet):
         if other.__class__ == self.__class__:
             return (other.service + 0x40) == self.service or \
                    (self.service == 0x7f and
-                    self.requestServiceId == other.service)
+                    self.requestServiceId == other.service and
+                    self.negativeResponseCode != 0x78)
         return 0
 
     def hashret(self):
